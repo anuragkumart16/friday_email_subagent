@@ -13,9 +13,16 @@ export async function healthcheckController(req: Request, res: Response) {
 
 
 export async function emailAgentController(req: Request, res: Response) {
+    const { recipient, prompt , attachments } = req.body
+
+    if(!recipient || !prompt){
+        return ApiResponse(res,400,"Email and Prompt are required!")
+    }
 
     const response = await emailAgentGraph.invoke({
-        recipient : "anurag@google.com"
+        recipient : recipient,
+        prompt : prompt,
+        attachments : attachments ?? []
     })
     console.log(response)
     
