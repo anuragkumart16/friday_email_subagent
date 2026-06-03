@@ -18,10 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // router imports
-import healthCheckRouter from "./routes/healthcheck.routes"
+import healthCheckRouter from "./healthCheck/healthcheck.routes"
+import emailAgentRouter from "./emailAgent/route";
 
 // url mapping
 app.use("/healthcheck", healthCheckRouter)
+app.use("/api/v1", emailAgentRouter)
 
 
 // global error handler
