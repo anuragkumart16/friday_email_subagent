@@ -13,7 +13,18 @@ export async function healthcheckController(req: Request, res: Response) {
 
 
 export async function emailAgentController(req: Request, res: Response) {
-    const { recipient, prompt , attachments } = req.body
+    const { recipient, prompt , attachments, agentState , approved} = req.body
+
+    if(approved){
+        if(!agentState) return ApiResponse(res,400,"No Previous State Found!")
+        const response = await emailAgentGraph.invoke({
+            ...agentState,
+            approved : true,
+            
+        })
+        return ApiResponse(res,200,"Email approved successfully",response)
+    }
+
 
     if(!recipient || !prompt){
         return ApiResponse(res,400,"Email and Prompt are required!")

@@ -16,3 +16,17 @@ export const appConfig = {
     microserviceName: process.env.MICROSERVICE_NAME ? process.env.MICROSERVICE_NAME + "microservice" : "server"
 }
 
+if(!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD){
+    throw new Error("Email User and Password are required!")
+}
+export const emailConfig = {
+    EMAIL_USER : process.env.EMAIL_USER,
+    EMAIL_PASSWORD : process.env.EMAIL_PASSWORD
+}
+
+if(!process.env.GROQ_API_KEY){
+    throw new Error("GROQ API KEY is required!")
+}
+export const groqConfig = {
+    GROQ_API_KEY : process.env.GROQ_API_KEY
+}

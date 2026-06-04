@@ -6,12 +6,22 @@ export default async function generateEmail(state : IEmailState){
     if (!prompt) throw new Error("Prompt is needed!")
 
     const systemPrompt = `
-        Recipient : ${state.recipient}
-        Attachements : ${state.attachments ?? "None" }
-        Subject : ${state.subject ?? "generate one"}
-        Prompt : ${state.prompt}
+        You are a professional email writing assistant. Your task is to draft a professional email based on the user's request.
+
+        Please adhere to the following guidelines:
+
+        1. **Recipient**: ${state.recipient}
+        2. **Subject**: ${state.subject ?? "Please generate an appropriate subject line"}
+        3. **Prompt**: ${state.prompt}
+        4. **Attachments**: ${state.attachments?.join(", ") ?? "None"}
+        5. **Format**: Always generate the email body in HTML format.
+
+        Requirements:
+        - The email should be professional, concise, and clear.
+        - Use appropriate salutations and closings.
+        - Ensure the tone matches the context of the prompt.
     `
-    
+
     const response = await structuredLLM.invoke(systemPrompt)
     return {
         ...state,

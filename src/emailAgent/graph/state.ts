@@ -6,8 +6,9 @@ export const EmailStateAnnotation = Annotation.Root({
     subject: Annotation<string | undefined>(),
     body: Annotation<string>(),
     attachments: Annotation<string[] | undefined>(),
-    approved: Annotation<boolean>(),
+    approved: Annotation<boolean | undefined>(),
     status: Annotation<string | undefined>(),
+    extraInfo : Annotation<any | undefined>()
 })
 
 export type IEmailState = typeof EmailStateAnnotation.State
