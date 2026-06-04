@@ -25,6 +25,14 @@ import emailAgentRouter from "./emailAgent/route";
 app.use("/healthcheck", healthCheckRouter)
 app.use("/api/v1", emailAgentRouter)
 
+// "/" route response
+app.get("/",(req,res)=>{
+    return res.status(200).json({
+        status : true,
+        message : "Email Agent Microservice is running"
+    })
+})
+
 
 // global error handler
 app.use(errorHandler);
