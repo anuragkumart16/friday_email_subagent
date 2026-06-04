@@ -1,6 +1,11 @@
+LangGraph checkpoint currently has an ESM/CommonJS issue on Vercel.
+uuid is pinned to 9.0.1 via overrides to avoid runtime ERR_REQUIRE_ESM.
+Do not remove without testing deployment.
+
 # ✉️ AI Email Agent (LangGraph & Express.js)
 
 A production-ready TypeScript microservice that uses **LangGraph**, **Groq (Llama-3.3-70b-versatile)**, and **Nodemailer** to build a structured, Human-in-the-Loop (HITL) email drafting and sending assistant.
+
 
 ---
 
