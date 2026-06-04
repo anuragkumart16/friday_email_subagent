@@ -1,5 +1,8 @@
 # Project Overview
 
+> [!NOTE]
+> For the comprehensive guide, including detailed API reference, architecture diagram, LangGraph explanation, local setup, and Vercel deployment, please see the main [README.md](../README.md) in the project root.
+
 This is a TypeScript-based Microservice Template using Express.js. It provides a solid foundation for building scalable backend services with built-in best practices.
 
 ## Key Features
