@@ -24,3 +24,7 @@ export const emailConfig = {
 export const groqConfig = {
     GROQ_API_KEY : process.env.GROQ_API_KEY || ""
 }
+
+export const authConfig = {
+    AGENT_API_KEY : process.env.AGENT_API_KEY || ""
+}

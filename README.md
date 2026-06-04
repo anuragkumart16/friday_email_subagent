@@ -78,6 +78,7 @@ Create a `.env` file at the root of the project using `.env.example` as a templa
 PORT="5001"
 NODE_ENV="dev"
 MICROSERVICE_NAME="Template"
+AGENT_API_KEY="your-agent-api-key"
 
 # Database Configuration (Prisma)
 DATABASE_URL="mongodb://localhost:27017/email_agent"
@@ -117,7 +118,9 @@ Generates an email draft matching the recipient and prompt requirements.
 
 *   **URL**: `/api/v1/`
 *   **Method**: `POST`
-*   **Headers**: `Content-Type: application/json`
+*   **Headers**:
+    *   `Content-Type: application/json`
+    *   `x-api-key: <your-agent-api-key>` (or `Authorization: Bearer <your-agent-api-key>`)
 *   **Body Parameters**:
     *   `recipient` (string, required): Destination email address.
     *   `prompt` (string, required): Prompt describing the content/tone of the email.
@@ -126,6 +129,7 @@ Generates an email draft matching the recipient and prompt requirements.
     ```bash
     curl -X POST http://localhost:5001/api/v1 \
       -H "Content-Type: application/json" \
+      -H "x-api-key: your-agent-api-key" \
       -d '{
         "recipient": "anuragkumartiwari12@gmail.com",
         "prompt": "Write a short friendly email asking how he is doing."
@@ -155,7 +159,9 @@ Sends the generated draft after human review.
 
 *   **URL**: `/api/v1/`
 *   **Method**: `POST`
-*   **Headers**: `Content-Type: application/json`
+*   **Headers**:
+    *   `Content-Type: application/json`
+    *   `x-api-key: <your-agent-api-key>` (or `Authorization: Bearer <your-agent-api-key>`)
 *   **Body Parameters**:
     *   `approved` (boolean, required): Set to `true`.
     *   `agentState` (object, required): The entire state object returned in the `data` payload of the draft request.
@@ -163,6 +169,7 @@ Sends the generated draft after human review.
     ```bash
     curl -X POST http://localhost:5001/api/v1 \
       -H "Content-Type: application/json" \
+      -H "x-api-key: your-agent-api-key" \
       -d '{
         "approved": true,
         "agentState": {
