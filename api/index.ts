@@ -6,16 +6,13 @@
 // // this file lets the server work on vercel.
 
 import { StateGraph } from "@langchain/langgraph";
-import { Annotation } from "@langchain/langgraph";
 
-const TestState = Annotation.Root({
-  message: Annotation<string>(),
-});
+console.log("Before graph");
 
-const graph = new StateGraph(TestState);
+const graph = new StateGraph({} as any);
+
+console.log("After graph");
 
 export default function handler(req: any, res: any) {
-  return res.status(200).json({
-    success: true,
-  });
+  return res.json({ success: true });
 }
